@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> dataList;
     Button addButton;
     EditText addField;
+    Button deleteButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +51,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        cityList.setOnClickListener(new View.OnClickListener()
+
+        cityList.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
-            public void onClick(View v)
+            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3)
             {
-                dataList.remove();
+                deleteButton = findViewById(R.id.delete_button);
+                deleteButton.setOnClickListener(new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        dataList.remove(String.valueOf(arg0.getItemAtPosition(position)));
+                        cityList.setAdapter(cityAdapter);
+                    }
+                });
             }
         });
     };

@@ -25,20 +25,20 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/add_name"
-                android:layout_width="323dp"
+                android:layout_width="293dp"
                 android:layout_height="wrap_content"
                 android:hint="City" />
 
             <Button
                 android:id="@+id/add_button"
-                android:layout_width="wrap_content"
+                android:layout_width="108dp"
                 android:layout_height="wrap_content"
                 android:text="Add" />
 
         </LinearLayout>
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/delete_button"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="Delete" />

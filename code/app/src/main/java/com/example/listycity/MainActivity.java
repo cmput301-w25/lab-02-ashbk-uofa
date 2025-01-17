@@ -3,7 +3,11 @@ package com.example.listycity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -14,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     ListView cityList; //for reference to visual
     ArrayAdapter<String> cityAdapter;
     ArrayList<String> dataList;
+    Button addButton;
+    EditText addField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,5 +35,27 @@ public class MainActivity extends AppCompatActivity {
         //adapter takes list primitive into list view, tie it to content.xml file
         cityAdapter = new ArrayAdapter<>(this, R.layout.content, dataList);
         cityList.setAdapter(cityAdapter); //tie adapter to listview
-    }
+
+        addButton = findViewById(R.id.add_button);
+        addField = findViewById(R.id.add_name);
+        addButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Editable addName = addField.getText();
+                dataList.add(String.valueOf(addName));
+                cityList.setAdapter(cityAdapter);
+            }
+        });
+
+        cityList.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                dataList.remove();
+            }
+        });
+    };
 }

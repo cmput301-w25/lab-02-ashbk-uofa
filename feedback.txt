@@ -1,0 +1,2 @@
+Good job. 
+FYI, if I tap delete button without selecting an item, the app crashes. Maybe, you want to have some sort of a check for that.
